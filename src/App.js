@@ -1,21 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ListContacts from "./ListContacts";
 
 
-class ContactList extends React.Component {
-
-
-    render() {
-        const names = this.props.contacts;
-        return <ol>
-            {
-                names.map(name11 => <li key={name11}> {name11 + '!'} </li>)
-            }
-        </ol>
-    }
-}
-
-class App extends Component {
+class App extends React.Component {
 
     state = {
 
