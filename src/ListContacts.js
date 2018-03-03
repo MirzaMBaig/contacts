@@ -17,13 +17,16 @@ class ListContacts extends React.Component {
 
 
     render() {
-        let showingContact;
+        let showingContact = [];
+        let contacts = this.props.contacts || [];
+        console.log("contacts -- "+contacts.length);
+
         if(this.state.queryString){
             let match = new RegExp(escapeRegExp(this.state.queryString), 'i');
-            showingContact = this.props.contacts.filter(contact => match.test(contact.name));
+            showingContact = contacts.filter(contact => match.test(contact.name));
 
         }else{
-            showingContact = this.props.contacts;
+            showingContact = contacts;
         }
         showingContact.sort(sortBy('name'));
 
@@ -36,7 +39,7 @@ class ListContacts extends React.Component {
 
                 {showingContact.length!== this.props.contacts && (
                     <div className="showing-contacts">
-                        <span>Now showing {showingContact.length} of {this.props.contacts.length}</span>
+                        <span>Now showing {showingContact.length} of {contacts.length}</span>
                         <button onClick={this.clearQuery}>Show All</button>
                     </div>
                 )}
